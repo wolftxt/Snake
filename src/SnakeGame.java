@@ -41,8 +41,9 @@ public class SnakeGame {
                         if (moveSnake()) {
                             break;
                         }
+                        callback.update();
                     } catch (InterruptedException ex) {
-                        throw new RuntimeException("Interrupted Thread.sleep");
+                        ex.printStackTrace();
                     }
                 }
                 callback.gameOver();
@@ -68,16 +69,10 @@ public class SnakeGame {
             return true;
         }
         plan.addHead(head);
-        //callback.update(head);
         if (head.equals(plan.getApple())) {
-            //callback.update(plan.getApple());
             plan.newApple();
-            //callback.update(plan.getApple());
         } else {
-            //Point tail = plan.getTail();
             plan.removeTail();
-            //callback.update(tail);            
-            callback.update(head);
         }
         return false;
     }

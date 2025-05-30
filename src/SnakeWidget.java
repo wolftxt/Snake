@@ -68,9 +68,8 @@ public class SnakeWidget extends JComponent implements GraphicsCallback {
     }
 
     @Override
-    public void update(Point p) {
+    public void update() {
         this.repaint();
-        //this.repaint(p.x * s, p.y * s, s, s);
     }
 
     @Override
