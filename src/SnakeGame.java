@@ -9,7 +9,7 @@ public class SnakeGame {
     private SnakePlan plan;
     GraphicsCallback callback;
 
-    private boolean running;
+    public boolean running;
 
     public SnakeGame(GraphicsCallback callback) {
         this(callback, 20, 20, 200);
@@ -39,7 +39,7 @@ public class SnakeGame {
                     try {
                         Thread.sleep(timeToMove);
                         if (moveSnake()) {
-                            break;
+                            running = false;
                         }
                         callback.update();
                     } catch (InterruptedException ex) {

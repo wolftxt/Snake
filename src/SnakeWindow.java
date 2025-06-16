@@ -1,7 +1,7 @@
 
 import java.awt.event.KeyEvent;
 
-public class SnakeWindow extends javax.swing.JFrame  {
+public class SnakeWindow extends javax.swing.JFrame {
 
     public SnakeWindow() {
         initComponents();
@@ -18,7 +18,7 @@ public class SnakeWindow extends javax.swing.JFrame  {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         snakeWidget1.setMinimumSize(new java.awt.Dimension(50, 50));
-        snakeWidget1.setPreferredSize(new java.awt.Dimension(300, 300));
+        snakeWidget1.setPreferredSize(new java.awt.Dimension(800, 800));
         snakeWidget1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 snakeWidget1KeyPressed(evt);
@@ -30,7 +30,12 @@ public class SnakeWindow extends javax.swing.JFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void snakeWidget1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_snakeWidget1KeyPressed
-        SnakePlan plan = snakeWidget1.getGame().getPlan();
+        SnakeGame game = snakeWidget1.getGame();
+        SnakePlan plan = game.getPlan();
+        if (!game.running) {
+            snakeWidget1.gameOver();
+            return;
+        }
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP -> {
                 plan.setDirection(Directions.UP);
